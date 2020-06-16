@@ -62,7 +62,7 @@ const config = {
           {
             loader: 'eslint-loader',
             options: {
-              cache: true,
+              cache: false,
 
               cacheIdentifer: eslintCacheIdentifier
             }
@@ -225,7 +225,7 @@ const config = {
         }
       )
     ),
-    //  new HardSourceWebpackPlugin(),
+    new HardSourceWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 }
