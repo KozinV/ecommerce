@@ -7,11 +7,13 @@ const Basket = () => {
   // const selection = useSelector((s) => s.products.selection)
   // const list = useSelector((s) => s.products.list)
   return (
-    <div className="pt-10">
+    <div>
       <div className="fixed w-full">
         <Header />
       </div>
-      <CardsSort />
+      <div className="pt-20">
+        <CardsSort />
+      </div>
     </div>
   )
 }

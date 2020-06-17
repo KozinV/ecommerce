@@ -27,6 +27,9 @@ const Header = () => {
       <Link to="/" id="brand-name" className="text-gray-200 font-bold text-lg mx-2 pr-6">
         E-$HOP
       </Link>
+      <Link to="/logs" className="text-gray-200 font-bold text-lg mx-2 pr-6">
+        LOGz
+      </Link>
       <Link
         to="/basket"
         className="card__product-amount text-gray-200 font-bold text-lg mx-2 pr-4"
