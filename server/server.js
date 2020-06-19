@@ -49,7 +49,7 @@ server.get('/api/v1/products', (req, res) => {
 })
 
 server.post('/api/v1/logs', (req, res) => {
-  // console.log(req.body)
+  console.log(req.body)
   res.json(req.body)
 })
 

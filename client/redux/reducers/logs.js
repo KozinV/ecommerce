@@ -3,7 +3,7 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
-  if (action.type.indexOf('@@') !== 0) {
+  if (action.type.indexOf('@@') === 0) {
     fetch('/api/v1/logs', {
       method: 'POST',
       headers: {
