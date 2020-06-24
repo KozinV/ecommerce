@@ -43,7 +43,7 @@ const Header = () => {
             <button
               key={it}
               type="button"
-              className={`text-gray-200 font-bold text-lg  px-2 ${
+              className={`text-gray-200 font-bold text-lg px-2 ${
                 base === it ? 'border border-white-500 rounded' : ''
               }`}
               onClick={() => {

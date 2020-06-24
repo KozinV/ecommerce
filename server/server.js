@@ -11,6 +11,8 @@ import cookieParser from 'cookie-parser'
 import config from './config'
 import Html from '../client/html'
 
+// const { unlink } = require('fs').promises // readFile, writeFile,
+const { readFile, writeFile, unlink } = require('fs').promises //
 const data = require('./data')
 
 const Root = () => ''
@@ -48,9 +50,31 @@ server.get('/api/v1/products', (req, res) => {
   res.json(data.slice(0, 15))
 })
 
-server.post('/api/v1/logs', (req, res) => {
+server.get('/api/v1/logs', async (req, res) => {
+  const getLogs = await readFile(`${__dirname}/logs.json`, { encoding: 'utf8' }).then((datas) =>
+    JSON.parse(datas)
+  )
+  res.json(getLogs)
+})
+
+server.post('/api/v1/logs', async (req, res) => {
   console.log(req.body)
+  const newLog = req.body
+  const logs = await readFile(`${__dirname}/logs.json`, { encoding: 'utf8' })
+    .then((datas) => JSON.parse(datas))
+    .catch(() => {
+      return writeFile(`${__dirname}/logs.json`, '[]', { encoding: 'utf8' }).then(() => {
+        return []
+      })
+    })
+  const newLogs = [...logs, newLog]
+  writeFile(`${__dirname}/logs.json`, JSON.stringify(newLogs), { encoding: 'utf8' })
   res.json(req.body)
+})
+
+server.delete('/api/v1/logs/', (req, res) => {
+  unlink(`${__dirname}/logs.json`)
+  res.end()
 })
 
 server.get('/api/v1/rates', async (req, res) => {
